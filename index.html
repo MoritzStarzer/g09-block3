@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+      html, body { 
+        height: 100%;
+        margin: 0;
+      }
+      div.full{
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <script src="http://openlayers.org/en/v3.10.1/build/ol.js" type="text/javascript"></script>
+    <title>OpenLayers 3 example</title>
+  </head>
+  <body>
+    <div id="map" class="full"></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.MapQuest({layer: 'sat'
+			})
+          }),
+		  new ol.layer.Vector({
+          source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        url: 'https://gist.githubusercontent.com/anonymous/2848c0f81cc646b8f923/raw/527e7937bc730353afa38463b43816cf9d735a65/map.geojson'
+            })
+          }),
+          new ol.layer.Vector({
+          source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        url: 'https://gist.githubusercontent.com/anonymous/ee6ba5fa3b698e3cab0f/raw/6c2269063069f044901056c3a43670e74e95e1b2/map.geojson'
+            })
+          }),
+                   new ol.layer.Vector({
+          source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        url: 'https://gist.githubusercontent.com/anonymous/7d0ac86524966f5a5da0/raw/53258ac530f39e0acdb0fc8bf52456cb99a531eb/map.geojson'
+            })
+          }),
+		  new ol.layer.Vector({
+          source: new ol.source.Vector({
+        format: new ol.format.GeoJSON(),
+        url: 'https://gist.githubusercontent.com/anonymous/3fb689ff49598bcab237/raw/c951c65a527a34de40ec8e9bd77d9c5f3f739b29/map.geojson'
+            })
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([13.41, 48.82]),
+          zoom: 6
+        })
+      });
+    </script>
+  </body>
+</html>
